@@ -1,0 +1,64 @@
+<script>
+  let $fun_one = () => {
+    return "welcome to arrow functions";
+  };
+  console.log($fun_one); //() => { return "welcome to arrow functions"; }
+  console.log($fun_one()); //welcome to arrow functions
+</script>
+
+<script>
+  let ui_dev = (arg1, arg2, arg3) => {
+    return `${arg1}<==>${arg2}<==>${arg3}`;
+  };
+  console.log(ui_dev("ReactJS", "NodeJS", "MongoDB")); // ReactJS<==>NodeJS<==>MongoDB
+  console.log(ui_dev("Angular", "NodeJS", "MySQL")); // Angular<==>NodeJS<==>MySQL
+  console.log(ui_dev("VueJS", "NodeJS", "SQLServer")); // VueJS<==>NodeJS<==>SQLServer
+</script>
+
+<script>
+  let _outer = () => {
+    return () => {
+      return "hello, welcome to Arrow Functions";
+    };
+  };
+  console.log("outer def", _outer);
+  //   outer def () => {
+  //     return () => {
+  //       return "hello, welcome to Arrow Functions";
+  //     };
+  //   }
+
+  console.log("inner def", _outer());
+  //   inner def () => {
+  //       return "hello, welcome to Arrow Functions";
+  //     }
+  console.log("inner output ", _outer()()); // arrowFunctions.html:26 inner output  hello, welcome to Arrow Functions
+</script>
+
+<script>
+  let fun_one = (arg1) => {
+    return fun_two;
+  };
+
+  let fun_two = (arg1) => {
+    return fun_three;
+  };
+
+  let fun_three = (arg1) => {
+    console.log(arg1);
+  };
+
+  fun_one("ABC")("XYZ")("Hello"); // Hello
+</script>
+
+<script>
+  let arr = [];
+
+  for (let i = 0; i < 5; i++) {
+    arr[i] = () => console.log("hello");
+  }
+
+  for (let i = 0; i < arr.length; i++) {
+    arr[i]();
+  }
+</script>

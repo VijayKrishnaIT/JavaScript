@@ -1,0 +1,36 @@
+<script>
+  function fun_one(...arg1) {
+    console.log(arg1);
+  }
+  fun_one(100); //[100]
+  fun_one("ReactJS", "16.8"); //["ReactJS", "16.8"]
+  fun_one(); //[]
+  fun_one(undefined); //[undefined]
+  fun_one(null); //[null]
+  fun_one(undefined, null); //[undefined, null]
+</script>
+
+<script>
+  function fun_one(...arg1,...arg2){
+
+  };
+  fun_one("Hello_1","Hello_2");    //Uncaught SyntaxError: Rest parameter must be last formal parameter
+</script>
+
+<script>
+  function fun_one(...arg1,arg2){
+
+  };    //Uncaught SyntaxError: Rest parameter must be last formal parameter
+</script>
+
+<script>
+  function fun_one(arg1, ...arg2) {
+    console.log(arg1, arg2);
+  }
+  fun_one(); //undefined []
+  fun_one(undefined); //undefined []
+  fun_one(undefined, undefined); //undefined [undefined]
+  fun_one(null); //null []
+  fun_one(null, null, undefined); //null  [null, undefined]
+  fun_one("ReactJS", "NodeJS", "MongoDB"); //ReactJS  ["NodeJS", "MongoDB"]
+</script>

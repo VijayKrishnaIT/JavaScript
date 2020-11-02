@@ -1,0 +1,83 @@
+<!-- Named Functions Examples -->
+<script>
+  function fun_one() {
+    return "welcome to JavaScript";
+  }
+  console.log(fun_one); // ƒ fun_one() { return "welcome to JavaScript"; }
+  console.log(fun_one()); //welcome to JavaScript
+</script>
+
+<script>
+  function fun_one() {
+    return fun_two;
+  }
+  function fun_two() {
+    return "welcome";
+  }
+  console.log(fun_one()()); //welcome
+</script>
+
+<script>
+  function fun_one(arg1, arg2, arg3) {
+    console.log(arg1, "<=>", arg2, "<=>", arg3);
+    // ReactJS <=> NodeJS <=> MongoDB
+    // Angular <=> NodeJS <=> MySQL
+    // VueJS <=> NodeJS <=> SQLServer
+  }
+  fun_one("ReactJS", "NodeJS", "MongoDB");
+  fun_one("Angular", "NodeJS", "MySQL");
+  fun_one("VueJS", "NodeJS", "SQLServer");
+</script>
+
+<script>
+  function fun_one(param1, param2, param3) {
+    console.log(param1, param2, param3);
+  }
+
+  function front_end() {
+    return "ReactJS";
+  }
+
+  function server() {
+    return "NodeJS";
+  }
+
+  function backend() {
+    return "MongoDB";
+  }
+
+  fun_one(front_end, server, backend);
+  //ƒ front_end() {
+  //     return "ReactJS";
+  //   } ƒ server() {
+  //     return "NodeJS";
+  //   } ƒ backend() {
+  //     return "MongoDB";
+  //   }
+</script>
+
+<script>
+  let arr = [];
+  function fun_one() {
+    return "hello";
+  }
+  for (let i = 0; i < 5; i++) {
+    arr[i].push(fun_one);
+  }
+  console.log(arr);
+  console.log(arr[0]());
+  console.log(arr[1]());
+  console.log(arr[2]());
+  console.log(arr[3]());
+  console.log(arr[4]());
+</script>
+
+<script>
+  var demo = "hello";
+
+  function demo() {
+    return "demo";
+  }
+
+  console.log(demo); //var : hello   let : Uncaught SyntaxError: Identifier 'demo' has already been declared
+</script>

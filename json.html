@@ -1,0 +1,236 @@
+<script>
+  let obj = {
+    sub_one: "ReactJS",
+    sub_two: "NodeJS",
+    sub_three: "MongoDB",
+  };
+  console.log(obj.sub_one, obj.sub_two, obj.sub_three); //ReactJS NodeJS MongoDB
+</script>
+
+<script>
+  let obj = {
+    key1: "Hello_1",
+    key2: "Hello_2",
+    key3: "Hello_3",
+  };
+  for (let key in obj) {
+    console.log(key, obj[key], typeof key);
+  }
+</script>
+
+<script>
+  let obj = {
+    login: login,
+    logout: logout,
+  };
+  function login() {
+    return "welcome to login module";
+  }
+  function logout() {
+    return "welcome to logout module";
+  }
+  console.log(obj.login(), obj.logout()); //welcome to login module welcome to logout module
+</script>
+
+<script>
+  let obj = {
+    oracle: () => {
+      return "oracle connection soon...!";
+    },
+    mysql: () => {
+      return "mysql connection soon...!";
+    },
+    sqlserver: () => {
+      return "sqlserver connection soon...!";
+    },
+    mongodb: () => {
+      return "mongodb connection soon...!";
+    },
+  };
+  console.log(obj.oracle(), obj.mysql(), obj.sqlserver(), obj.mongodb()); //oracle connection soon...! mysql connection soon...! sqlserver connection soon...! mongodb connection soon...!
+</script>
+
+<script>
+  let obj = {
+    p_id: 111,
+  };
+  //freeze ===>  read(yes) , write(no), update(no), delete(no)
+  Object.freeze(obj);
+  console.log(obj); //{p_id: 111}
+
+  obj.p_name = "p_one";
+  console.log(obj); //{p_id: 111}
+
+  obj.p_id = 222;
+  console.log(obj); //{p_id: 111}
+
+  delete obj.p_id;
+  console.log(obj); //{p_id: 111}
+</script>
+
+<script>
+  let obj = {
+    p_id: 111,
+  };
+
+  //seal ==> read(yes)  , update(yes) , write(no) , delete(no)
+  Object.seal(obj);
+
+  console.log(obj); //{p_id: 111}
+
+  obj.p_id = 222;
+  console.log(obj); //p_id: 222}
+
+  obj.p_name = "p_one";
+  console.log(obj); //{p_id: 222}
+
+  delete obj.p_id;
+  console.log(obj); //{p_id: 222}
+</script>
+
+<script>
+  let obj = {};
+  obj["key1"] = "Hello_1";
+  console.log(obj); //{key1: "Hello_1"}
+</script>
+
+<script>
+  let obj = {
+    key1: "Hello_1",
+    key2: "Hello_2",
+    key3: "Hello_3",
+  };
+  delete obj.key1;
+  delete obj.key2;
+  delete obj.key3;
+  console.log(obj); //{}
+</script>
+
+<script>
+  let obj = {
+    p_id: 111,
+  };
+  //define p_name   ===>  read(yes)   update(no)   delete(no)
+  Object.defineProperty(obj, "p_name", { value: "p_one", writable: false });
+
+  console.log(obj); //{p_id: 111, p_name: "p_one"}
+
+  obj.p_id = "p111";
+  console.log(obj); //{p_id: "p111", p_name: "p_one"}
+
+  obj.p_name = "product_one";
+  console.log(obj); //{p_id: "p111", p_name: "p_one"}
+
+  delete obj.p_id;
+  console.log(obj); //{p_name: "p_one"}
+
+  delete obj.p_name;
+  console.log(obj); //{p_name: "p_one"}
+</script>
+
+<script>
+  let obj = {
+    p_id: 111,
+  };
+
+  //p_id ===> read(yes)   update(yes)   delete(yes)
+
+  //p_name  ===> read(yes)   update(no)  delete(no)
+
+  //p_cost  ===> read(yes)   update(yes)   delete(no)
+
+  Object.defineProperties(obj, {
+    p_name: { value: "p_one", writable: false },
+    p_cost: { value: 10000, writable: true },
+  });
+
+  console.log(obj); //{p_id: 111, p_name: "p_one", p_cost: 10000}
+
+  obj.p_id = "p111";
+  obj.p_name = "product_one";
+  obj.p_cost = 100000;
+  console.log(obj); //{p_id: "p111", p_name: "p_one", p_cost: 100000}
+
+  delete obj.p_id;
+  delete obj.p_name;
+  delete obj.p_cost;
+  console.log(obj); //{p_name: "p_one", p_cost: 100000}
+</script>
+
+<script>
+  let obj = {
+    key1: "value1",
+    key2: "value2",
+    key3: "value3",
+  };
+  console.log(Object.keys(obj)); //["key1", "key2", "key3"]
+  console.log(Object.values(obj)); //["value1", "value2", "value3"]
+</script>
+
+<script>
+  let obj1 = { sub_one: "ReactJS" };
+  let obj2 = { sub_two: "NodeJS" };
+  let obj3 = { sub_three: "MongoDB" };
+  let obj = Object.assign(obj1, obj2, obj3);
+  console.log(obj); // {sub_one: "ReactJS", sub_two: "NodeJS", sub_three: "MongoDB"}
+  let final_obj = { ...obj1, ...obj2, ...obj3 };
+  console.log(final_obj); //{sub_one: "ReactJS", sub_two: "NodeJS", sub_three: "MongoDB"}
+</script>
+
+<script>
+  let obj = {
+    sub_one: "ReactJS",
+  };
+  console.log(obj.hasOwnProperty("sub_one")); //true
+</script>
+
+<script>
+  let products = [
+    { p_id: 111, p_name: "p_one", p_cost: 10000 },
+    { p_id: 222, p_name: "p_two", p_cost: 20000 },
+    { p_id: 333, p_name: "p_three", p_cost: 30000 },
+    { p_id: 444, p_name: "p_four", p_cost: 40000 },
+    { p_id: 555, p_name: "p_five", p_cost: 50000 },
+  ];
+  document.write(`<table border="1"
+                           align="center"
+                           cellpadding="10px"
+                           cellspacing="10px">
+                           <thead>
+                                <tr>
+                                    <th>SNO</th>
+                                    <th>P_ID</th>
+                                    <th>P_NAME</th>
+                                    <th>P_COST</th>
+                                </tr>
+                           </thead>
+                           <tbody>`);
+  products.forEach((element, index) => {
+    document.write(`<tr>
+                <td>${index + 1}</td>
+                <td>${element.p_id}</td>
+                <td>${element.p_name}</td>
+                <td>${element.p_cost}</td>
+            </tr>
+        `);
+  });
+  document.write(`</tbody>
+                       </table>`);
+</script>
+
+<!--
+    Assignment : https://www.w3schools.com/angular/customers.php
+-->
+
+<script>
+  let obj = {
+    sub_one: "ReactJS",
+    sub_two: "NodeJS",
+    sub_three: "MongoDB",
+  };
+  let arr = Object.entries(obj);
+  console.log(arr);
+
+  let obj1 = Object.fromEntries(arr);
+  console.log(obj1);
+</script>
