@@ -227,3 +227,15 @@ we can use arrow functions as callback functions
   - we will run server by using following command
 
     > json-server --watch demo.json
+
+# promises
+
+    - Promises are special javascript objects
+    - communication between producer and consumer called as promise
+    - promises have 3 states
+    1) resolve (success)
+    2) reject (failure)
+    3) pending
+
+    - we will create Promises by using "Promise" class
+    - we will consume the Promises by using then()
